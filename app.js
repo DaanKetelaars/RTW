@@ -1,62 +1,39 @@
-const express = require('express');
-const app = express();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+const express = require('express')
+const app = express()
+const http = require('http').createServer(app)
+const path = require('path')
+const io = require('socket.io')(http)
+const fetch = require('node-fetch')
+require('dotenv').config()
+
 const port = process.env.PORT || 8282;
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-app.use(express.static('public'));
+app.use(express.static(path.resolve('public')))
+
+const apiKey = process.env.API_KEY
+let url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&type=video&part=snippet&maxResults=50&q=meme`
+console.log(url);
 
 app.get("/", (req, res) => {
-    res.render('home')
+    const key = `${url}`
+    fetch(key)
+        .then(async response => {
+            const data = await response.json()
+            const items = data.items;
+            console.log(items);
+            res.render('home', {})
+        })
 });
 
-// function onConnection(socket){
-//   socket.on('drawing', function(data){
-//     socket.broadcast.emit('drawing', data);
-//     console.log(data);
-//   });
-// }
-
-//   socket.on('rectangle', function(data){
-//     socket.broadcast.emit('rectangle', data);
-//     console.log(data);
-//   });
-
-//   socket.on('linedraw', function(data){
-//     socket.broadcast.emit('linedraw', data);
-//     console.log(data);
-//   });
-
-//    socket.on('circledraw', function(data){
-//     socket.broadcast.emit('circledraw', data);
-//     console.log(data);
-//   });
-
-//   socket.on('ellipsedraw', function(data){
-//     socket.broadcast.emit('ellipsedraw', data);
-//     console.log(data);
-//   });
-
-//   socket.on('textdraw', function(data){
-//     socket.broadcast.emit('textdraw', data);
-//     console.log(data);
-//   });
-
-//   socket.on('copyCanvas', function(data){
-//     socket.broadcast.emit('copyCanvas', data);
-//     console.log(data);
-//   });
-
-//   socket.on('Clearboard', function(data){
-//     socket.broadcast.emit('Clearboard', data);
-//     console.log(data);
-//   });
-
-// }
-
-// io.on('connection', onConnection);
+io.on('connection', (socket) => {
+    console.log('connected')
+    socket.on('message', (evt) => {
+        console.log(evt)
+        socket.broadcast.emit('message', evt)
+    })
+})
 
 http.listen(port, () => console.log('listening on port ' + port));
