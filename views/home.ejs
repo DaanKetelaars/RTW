@@ -1,6 +1,22 @@
 <%- include('./partials/head.ejs') %>
 <h1>Hello World</h1>
+<%- include('./partials/header.ejs') %>
 
-
+<% items.forEach(item => { %>
+<h1><%=item.snippet.title%></h1>
+<article>
+    <iframe id="player" width="560" height="315"
+        src="https://www.youtube.com/embed/<%= item.id.videoId %>?enablejsapi=1" title="YouTube video player"
+        allow="autoplay" allowfullscreen=""></iframe>
+    <div class="yt-controllers">
+        <button id="yt-playpause" type="button">
+            Play/Pause
+        </button>
+        <button id="yt-stop" type="button">
+            Stop
+        </button>
+    </div>
+</article>
+<% }) %>
 
 <%- include('./partials/footer.ejs') %>

@@ -12,27 +12,42 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 app.use(express.static(path.resolve('public')))
-
 const apiKey = process.env.API_KEY
-let url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&type=video&part=snippet&maxResults=50&q=meme`
-console.log(url);
+let url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&type=video&part=snippet&maxResults=10&q=`
 
 app.get("/", (req, res) => {
-    const key = `${url}`
+    const key = `${url}${req.query.q}`
+    console.log(key);
     fetch(key)
         .then(async response => {
             const data = await response.json()
             const items = data.items;
-            console.log(items);
-            res.render('home', {})
+            res.render('home', {
+                value: req.query.q,
+                items
+            })
         })
 });
 
+
+
 io.on('connection', (socket) => {
-    console.log('connected')
+    console.log('A user just connected.');
+    io.emit("connection")
+    socket.on('disconnect', () => {
+        console.log('A user has disconnected.');
+    });
+    socket.on('stop', () => {
+        console.log('received: stop');
+        io.emit('stop');
+    });
+    socket.on('playPause', () => {
+        console.log('received: playPause');
+        io.emit('playPause')
+    })
     socket.on('message', (evt) => {
         console.log(evt)
-        socket.broadcast.emit('message', evt)
+        io.emit('message', evt)
     })
 })
 
