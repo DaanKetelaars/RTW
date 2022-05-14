@@ -6,7 +6,8 @@ const io = require('socket.io')(http)
 const fetch = require('node-fetch')
 require('dotenv').config()
 
-const port = process.env.PORT || 8282;
+// const port = process.env.PORT;
+
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
@@ -51,4 +52,4 @@ io.on('connection', (socket) => {
     })
 })
 
-http.listen(port, () => console.log('listening on port ' + port));
+http.listen(process.env.PORT || 8282);
