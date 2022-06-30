@@ -1,8 +1,8 @@
 # Real Time Web
 
-![example workflow](https://img.shields.io/github/languages/count/DaanKetelaars/PWA?style=flat-square)
-![example workflow](https://img.shields.io/github/last-commit/DaanKetelaars/PWA?style=flat-square)
-![example workflow](https://img.shields.io/github/repo-size/DaanKetelaars/PWA?style=flat-square)
+![example workflow](https://img.shields.io/github/languages/count/DaanKetelaars/RTW?style=flat-square)
+![example workflow](https://img.shields.io/github/last-commit/DaanKetelaars/RTW?style=flat-square)
+![example workflow](https://img.shields.io/github/repo-size/DaanKetelaars/RTW?style=flat-square)
 
 
 ## Live DEMO
@@ -84,10 +84,10 @@ PORT = 8080
 
 ## Meta
 For any questions, don't hesitate to reach out!
-Daan Ketelaars - daanketelaars@gmail.com - https://github.com/DaanKetelaars/PWA
+Daan Ketelaars - daanketelaars@gmail.com - https://github.com/DaanKetelaars/RTW
 
 ## License
 
-Usage is provided under the [MIT License](https://github.com/git/git-scm.com/blob/master/MIT-LICENSE.txt) MIT. See [LICENSE](https://github.com/DaanKetelaars/PWA/blob/master/LICENSE) for the full details.
+Usage is provided under the [MIT License](https://github.com/git/git-scm.com/blob/master/MIT-LICENSE.txt) MIT. See [LICENSE](https://github.com/DaanKetelaars/RTW/blob/master/LICENSE) for the full details.
 
 
