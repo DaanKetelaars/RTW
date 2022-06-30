@@ -17,6 +17,9 @@ const apiKey = process.env.API_KEY
 let url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&type=video&part=snippet&maxResults=10&q=`
 
 app.get("/", (req, res) => {
+    if (req.query.q === undefined) {
+        req.query.q = 'Rick Astley'
+    }
     const key = `${url}${req.query.q}`
     console.log(key);
     fetch(key)
