@@ -8,12 +8,12 @@
 ## Live DEMO
 [https://rijks-online.herokuapp.com](https://mysterious-fjord-61345.herokuapp.com/)
 
-<img src="screenshot.png" alt="example of the live application" />
+<img src="https://github.com/DaanKetelaars/RTW/blob/main/Schermafbeelding%202022-06-30%20om%2022.26.12.png" alt="example of the live application" />
 
 ## Description
-Voor progressive web applicaties kregen wij de taak om onze client side app van WAFS om te zetten naar een server side app. De app blijft hetzelfde, maar de functionaliteiten veranderen. Je bent nu meer met de server bezig dan client side javascript. Wij hebben voor de server side app nodejs en express gebruikt. Server side en een PWA bied je ook meer opties om je app nog robuuster te maken.
+Voor real time web ben ik bezig geweest met een real time app. Ik had veel concepten en ben uiteindelijk gegaan voor een collabrative YouTube. Het is een probleem wat ik zelf wel eens heb gehad. Je bent met iemand aan het bellen via discord of teams. Iemand wil een leuke video laten zien op YouTube, dit kan maar dan via schermdelen, dan via het geluid van diegene. Zoals je al kan lezen, niet heel soepel. De kwaliteit verminderd ook. Vandaar dat dit idee. Dus het idee is dat je gezamenlijk in een room komt, daar kun je een video zoeken. Beide kunnen zoeken en beide kunnen een video aanzetten of stopzetten. 
 
-## Client side VS Server side
+## Real Time Web Apps & Sockets
 Voor dit project heb ik mijn client side Rijksmuseum app omgezet naar een server side app. Server side bied veel voordelen, tuurlijk is server side niet nodig voor een simpele app. Het ligt echt aan de app die je bouwt en de functionaliteiten van je app. Mijn Rijks Museum app zou best wel via server side kunnen werken. Hierdoor kan ik de routing simpeler en beter laten werken, ook wordt het regelen van data makkelijker. 
 
 Ik zal eerst even kort client side en server side vergelijken met elkaar, wat zijn sommige verschillen tussen de 2.
@@ -32,10 +32,6 @@ Server Side
 
 
 Zoals je kan zien zijn er veel verschillen, server side is toch vaak een betere optie. Het is veiliger en je hebt meer opties qua het verwerken van data. Maar zoals ik al aangaf, ligt het echt aan de applicatie die je bouwt. Want soms kan client side genoeg zijn en heb je niet alle heisa van server side nodig.
-
-
-## Activity Diagram
-<img src="activity-diagram.jpg" alt="activity diagram" />
 
 ## Reflectie
 Het was even wennen, maar na een tijdje was het eigenlijk best simpel en overzichtelijk. Ik vond het wel prettig werken en helemaal de service worker vond ik echt top. Dat je offline nog van alles kan aanbieden is heel mooi en maakt je app of website nog beter in mijn ogen. Ik moet wel eerlijk zijn dat ik in het begin echt moeite heb gehad met express, omdat ik er zelf nog niet veel mee gewerkt had. Alleen ben ik toch tevreden uiteindelijk over mijn app. 
