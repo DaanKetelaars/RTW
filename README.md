@@ -6,7 +6,7 @@
 
 
 ## Live DEMO
-https://rijks-online.herokuapp.com
+[https://rijks-online.herokuapp.com](https://mysterious-fjord-61345.herokuapp.com/)
 
 <img src="screenshot.png" alt="example of the live application" />
 
