@@ -28,6 +28,78 @@ Voor dit project heb ik gebruik gemaakt van een WebSocket library, genaamd socke
 https://socket.io/
 
 ## Gebruikte Sockets
+Hieronder mijn gebruikte sockets. De sockets die ik gebruik zijn voor het zoeken, video afspelen en op stop zetten.
+
+### BASE SOCKETS
+```js
+io.on('connection', (socket) => {
+    console.log('A user just connected.');
+    io.emit("connection")
+    socket.on('disconnect', () => {
+        console.log('A user has disconnected.');
+    });
+    socket.on('stop', () => {
+        console.log('received: stop');
+        io.emit('stop');
+    });
+    socket.on('playPause', () => {
+        console.log('received: playPause');
+        io.emit('playPause')
+    })
+    socket.on('message', (evt) => {
+        console.log(evt)
+        io.emit('message', evt)
+    })
+})
+```
+
+### PLAY & PAUSE
+```js
+    socket.on('message', (data) => {
+        userInput.value = data
+        console.log(data);
+        window.location.replace(`/?q=${data}`)
+    })
+
+    socket.on('stop', () => {
+        player.stopVideo();
+        console.log('stopped');
+    })
+    socket.on('playPause', () => {
+        if (isPlayed === false) {
+            player.playVideo();
+            isPlayed = true;
+        } else {
+            player.pauseVideo();
+            isPlayed = false;
+        }
+        console.log('played or paused');
+    })
+```
+
+## YouTube API
+Via deze manier haal ik mijn data op vanuit de YouTube API. Eigenlijk heel eenvoudig.
+```js
+const apiKey = process.env.API_KEY
+let url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&type=video&part=snippet&maxResults=10&q=`
+
+app.get("/", (req, res) => {
+    if (req.query.q === undefined) {
+        req.query.q = 'Rick Astley'
+    }
+    const key = `${url}${req.query.q}`
+    console.log(key);
+    fetch(key)
+        .then(async response => {
+            const data = await response.json()
+            const items = data.items;
+            res.render('home', {
+                value: req.query.q,
+                items
+            })
+        })
+});
+```
 
 ## Concepten
 <img src="https://github.com/DaanKetelaars/RTW/blob/main/IMG_9945.jpg" alt="concept schetsen 01" />
