@@ -13,28 +13,22 @@
 ## Description
 Voor real time web ben ik bezig geweest met een real time app. Ik had veel concepten en ben uiteindelijk gegaan voor een collabrative YouTube. Het is een probleem wat ik zelf wel eens heb gehad. Je bent met iemand aan het bellen via discord of teams. Iemand wil een leuke video laten zien op YouTube, dit kan maar dan via schermdelen, dan via het geluid van diegene. Zoals je al kan lezen, niet heel soepel. De kwaliteit verminderd ook. Vandaar dat dit idee. Dus het idee is dat je gezamenlijk in een room komt, daar kun je een video zoeken. Beide kunnen zoeken en beide kunnen een video aanzetten of stopzetten. 
 
-## Real Time Web Apps & Sockets
-Voor dit project heb ik mijn client side Rijksmuseum app omgezet naar een server side app. Server side bied veel voordelen, tuurlijk is server side niet nodig voor een simpele app. Het ligt echt aan de app die je bouwt en de functionaliteiten van je app. Mijn Rijks Museum app zou best wel via server side kunnen werken. Hierdoor kan ik de routing simpeler en beter laten werken, ook wordt het regelen van data makkelijker. 
+## Real Time Web Apps & WebSockets
+Ik zal kort hieronder even uitleggen wat een RTW app nou eigenlijk is. Daarnast zal ik ook sockets meenemen, dit is ook een cruciaal onderdeel van RTW.
 
-Ik zal eerst even kort client side en server side vergelijken met elkaar, wat zijn sommige verschillen tussen de 2.
+Real Time Web App
+Een Real Time Web App stuurt informatie (bijna) ogenblikkelijk tussen de users en de server. Dit is anders dan andere web apps, waar de client om informatie moet vragen van de server. 
 
-Client Side
-- The belangrijkste functie van client side is om de gevraagde output aan de eindgebruiker te leveren
-- De client side is de front-end, dit is waar de eindgebruiker krijgt te zien waar hij of zij naar gezocht had.
-- Client side apps werken op het systeem van de eindgebruiker
-- Client side is minder qua beveiliging, dit omdat je gemakkelijker bij de code kan.
+Bij een RTW app, opent de client een connectie direct vanuit de server zodat meerdere users een bericht kunnen sturen zonder te wachten of erom gevraagd te worden. Als er iets veranderd op de server, dan stuurt het de data direct over de connectie naar de client. Als er iets aan de client veranderd dan wordt het doorgestuurd naar de server, die bepaalt dan of dit ook verstuurt wordt naar andere clients.
 
-Server Side
-- De belangrijkste functie van server side is het manipuleren en toegang geven tot de vereiste database op het verzoek van de eindgebruiker.
-- Server side is meer een soort back-end, de code wordt verwerkt en het is niet zichtbaar voor de eindgebruiker.
-- Server side apps werken op een web server
-- Server side wordt gezien als meer veilige optie van het bouwen van applicaties.
+WebSockets
+WebSocket is een geadvanceerde API die je de optie bied om een two-way interactive communication (Persoon A stuurt een mail, Persoon B stuurt een eigen mail terug op de mail van Persoon A) sessie te openen tussen de browser van een user en de server. Met deze API kun je dus berichten of data versturen naar een server om dan event-driven responses te ontvangen zonder dat je de server om hoeft te vragen.
 
-
-Zoals je kan zien zijn er veel verschillen, server side is toch vaak een betere optie. Het is veiliger en je hebt meer opties qua het verwerken van data. Maar zoals ik al aangaf, ligt het echt aan de applicatie die je bouwt. Want soms kan client side genoeg zijn en heb je niet alle heisa van server side nodig.
+Voor dit project heb ik gebruik gemaakt van een WebSocket library, genaamd socket.io. Super handig en was uiteindelijk best makkelijk te gebruiken.
+https://socket.io/
 
 ## Reflectie
-Het was even wennen, maar na een tijdje was het eigenlijk best simpel en overzichtelijk. Ik vond het wel prettig werken en helemaal de service worker vond ik echt top. Dat je offline nog van alles kan aanbieden is heel mooi en maakt je app of website nog beter in mijn ogen. Ik moet wel eerlijk zijn dat ik in het begin echt moeite heb gehad met express, omdat ik er zelf nog niet veel mee gewerkt had. Alleen ben ik toch tevreden uiteindelijk over mijn app. 
+Persoonlijk was dit wel voor mij het lastigste vak, qua code. Ook een leuk vak, ik vond het heel tof om met real time data te werken. Toch ben ik best wel even bezig geweest om de sockets goed te begrijpen. Ik vond dat wel belangrijk, want eerst had ik dit niet gedaan en toen kwam ik wel in de knoop. Uiteindelijk heb ik hier goed voor gezeten en ben ik erg trots op mijn eindresultaat. Ik denk ook wel dat mijn concept erg uitdagend was, daarom ben ik ook extra trots dat hij gelukt is. Nou ja, soort van. Het enige probleem is dat de play en stop optie niet overal werkt. Alleen bij de eerste YouTube video. Dit is dan ook wel iets wat ik eventueel nog zou aanpassen als ik ooit verder zou of was gegaan met dit project.
 
 ## Table of Contents
 
@@ -48,17 +42,26 @@ Het was even wennen, maar na een tijdje was het eigenlijk best simpel en overzic
 
 Clone the GitHub Repo locally
 ```
-git clone https://github.com/DaanKetelaars/PWA
+git clone https://github.com/DaanKetelaars/RTW
 ```
 
 Connect your API Key.
 
-- Go to the Rijks Studio.
-- Create an account.
-- Go to advanced settings and ask for your own personal API key.
-- Create an .env file and add your own API key. Name it API_KEY in the .env file.
+Got to the YouTube development page and get your own API key
+https://developers.google.com/youtube/v3/getting-started
+
+When you have your API key, create a .env file and add it in their.
+Quick thing, also add your PORT to the .env file. 
+
+The .env file will look something like this:
+```env
+PORT=your_port_number_here
+API_KEY=myapikey
 ```
-`https://www.rijksmuseum.nl/api/nl/collection/?key=${api}`
+In the app.js file, right at the bottom, the PORT you added in the .env file is already connected. I added a fallback if that doesn't work, make sure to change the fallback to the same PORT number you added in the .env file.
+
+```
+`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&type=video&part=snippet&maxResults=10&q=`
 ```
 
 Install all packages
@@ -68,7 +71,7 @@ npm install
 
 Host this project on localhost. 
 ```
-PORT = 8080
+PORT = your_port_number_here
 ```
 
 ## Used Tools
@@ -76,7 +79,8 @@ PORT = 8080
 - [git](https://git-scm.com/)
 - [NodeJS](https://node.jshttps://nodejs.org)
 - [ExpressJS](https://expressjs.com/)
-- [rijks-api](https://data.rijksmuseum.nl/object-metadata/api/)
+- [Socket.io](https://socket.io/)
+- [YouTube-API]([https://data.rijksmuseum.nl/object-metadata/api/](https://developers.google.com/youtube/v3/getting-started))
 
 ## Meta
 For any questions, don't hesitate to reach out!
