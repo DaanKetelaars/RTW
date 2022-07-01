@@ -77,7 +77,7 @@ PORT = your_port_number_here
 - [NodeJS](https://node.jshttps://nodejs.org)
 - [ExpressJS](https://expressjs.com/)
 - [Socket.io](https://socket.io/)
-- [YouTube-API]([https://data.rijksmuseum.nl/object-metadata/api/](https://developers.google.com/youtube/v3/getting-started))
+- [YouTube-API](https://developers.google.com/youtube/v3/getting-started)
 
 ## Meta
 For any questions, don't hesitate to reach out!
