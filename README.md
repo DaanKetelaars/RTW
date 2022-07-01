@@ -27,6 +27,16 @@ WebSocket is een geadvanceerde API die je de optie bied om een two-way interacti
 Voor dit project heb ik gebruik gemaakt van een WebSocket library, genaamd socket.io. Super handig en was uiteindelijk best makkelijk te gebruiken.
 https://socket.io/
 
+## Gebruikte Sockets
+
+## Concepten
+<img src="" alt="concept schetsen 01" />
+<img src="" alt="concept schetsen 02" />
+
+## Data model
+<img src="" alt="data model" />
+
+
 ## Reflectie
 Persoonlijk was dit wel voor mij het lastigste vak, qua code. Ook een leuk vak, ik vond het heel tof om met real time data te werken. Toch ben ik best wel even bezig geweest om de sockets goed te begrijpen. Ik vond dat wel belangrijk, want eerst had ik dit niet gedaan en toen kwam ik wel in de knoop. Uiteindelijk heb ik hier goed voor gezeten en ben ik erg trots op mijn eindresultaat. Ik denk ook wel dat mijn concept erg uitdagend was, daarom ben ik ook extra trots dat hij gelukt is. Nou ja, soort van. Het enige probleem is dat de play en stop optie niet overal werkt. Alleen bij de eerste YouTube video. Dit is dan ook wel iets wat ik eventueel nog zou aanpassen als ik ooit verder zou of was gegaan met dit project.
 
