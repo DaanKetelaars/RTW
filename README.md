@@ -60,9 +60,6 @@ API_KEY=myapikey
 ```
 In the app.js file, right at the bottom, the PORT you added in the .env file is already connected. I added a fallback if that doesn't work, make sure to change the fallback to the same PORT number you added in the .env file.
 
-```
-`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&type=video&part=snippet&maxResults=10&q=`
-```
 
 Install all packages
 ```
