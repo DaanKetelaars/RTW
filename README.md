@@ -30,11 +30,11 @@ https://socket.io/
 ## Gebruikte Sockets
 
 ## Concepten
-<img src="" alt="concept schetsen 01" />
-<img src="" alt="concept schetsen 02" />
+<img src="https://github.com/DaanKetelaars/RTW/blob/main/IMG_9945.jpg" alt="concept schetsen 01" />
+<img src="https://github.com/DaanKetelaars/RTW/blob/main/IMG_9946.jpg" alt="concept schetsen 02" />
 
 ## Data model
-<img src="" alt="data model" />
+<img src="https://github.com/DaanKetelaars/RTW/blob/main/data-model.jpg" alt="data model" />
 
 
 ## Reflectie
